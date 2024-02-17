@@ -1,1 +1,62 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="profile.jpg" type="image/jpeg">
+    <title>Dane Jacobson</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+            margin: 0;
+            margin-top: 200px;
+            padding: 0;
+            background-color: #f9fafb; /* TailwindCSS-like light background */
+            color: #111827; /* TailwindCSS-like text color */
+        }
+
+        .circular-image {
+            width: 150px; /* or any size */
+            height: 150px; /* should be the same as width to maintain aspect ratio */
+            border-radius: 50%; /* this creates the circular shape */
+            object-fit: cover; /* this ensures the image covers the area without distortion */
+        }
+
+        .about-container {
+            max-width: 50%;
+            width: 600px; /* This ensures that the container doesn't get wider than 600px */
+            margin: 0 auto; /* This centers the container */
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            color: #333;
+            text-decoration: none;
+        }
+        .social-icons i {
+            font-size: 24px;
+        }
+
+    </style>
+</head>
+<body>
+<img src="profile.jpg" alt="Dane Jacobson anime altered profile" class="circular-image">
+
+<h1>Dane Jacobson</h1>
+<div class="about-container">
+    <p>I conquered this tiny corner of the noosphere to bulletproof my thoughts in a public arena. I'm always peripatetically bouncing between interests but my foundations are in artificial intelligence, synthetic biology, and music. I also conduct machine learning research at The EVERY Company.</p>
+</div>
+
+<div class="social-icons">
+    <a href="https://github.com/DaneJacobson" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://twitter.com/danesonance" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/in/dane-jacobson-ba0825155/" target="_blank"><i class="fab fa-linkedin"></i></a>
+</div>
+
+</body>
+</html>
