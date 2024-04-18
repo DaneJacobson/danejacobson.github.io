@@ -30,6 +30,14 @@
             color: #111827;
         }
 
+        .home-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+        }
+
         .circular-image {
             width: 150px;
             height: 150px;
@@ -37,21 +45,39 @@
             object-fit: cover;
         }
 
+        h1 {
+            margin: 0 0 10px 0;
+        }
+
+        .website-links {
+            margin: 0 5px 5px 5px;
+        }
+
+        .website-link {
+            text-decoration: none;
+            color: black;
+            background-color: rgb(246, 74, 74);
+            padding: 4px 16px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
         .about-container, .experience-container {
             max-width: 50%;
-            width: 600px;
+            width: 1000px;
             margin: 0 auto;
             margin-bottom: 20px;
         }
 
         .social-icons a {
             margin: 0 10px;
-            color: #333;
+            color: rgb(246, 74, 74);
             text-decoration: none;
         }
+
         .social-icons i {
             font-size: 24px;
-            margin: 0 10px 50px;
+            margin: 0 5px 5px;
         }
 
         .experience {
@@ -99,101 +125,21 @@
     </style>
 </head>
 <body>
-<a href="kenken-dist/index.html"><img src="images/profile.jpg" alt="Dane Jacobson anime altered profile" class="circular-image"></a>
-
-<h1>Dane Jacobson</h1>
-<div class="about-container">
-    <p>I conquered this tiny corner of the noosphere to bulletproof my thoughts in a public arena. I'm always peripatetically bouncing between interests but my foundations are in artificial intelligence, synthetic biology, and music.</p>
-</div>
-
-<div class="social-icons">
-    <a href="https://github.com/DaneJacobson" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://twitter.com/danesonance" target="_blank"><i class="fab fa-twitter"></i></a>
-    <a href="https://www.linkedin.com/in/dane-jacobson-ba0825155/" target="_blank"><i class="fab fa-linkedin"></i></a>
-</div>
-
-<div class="experience-container">
-    <div class="experience">
-        <a class="experience-link" href="https://3d-kenken.pages.dev" target="_blank">
-            <div class="experience-title">
-                <img src="images/kenken.png" alt="Meta logo" class="company-logo">
-                <div>
-                    <h3>3D KenKen</h3>
-                    <p>100s of DAUs</p>
-                </div>
-            </div>
-        </a>
-        <p>I built this in 2 days and immediately had many puzzle-inclined friends latch onto the game. It's classic Kenken, but in 3D! Nobody has solved a 5x5x5 to date, so maybe YOU can be the first!</p>
-        <a href="https://3d-kenken.pages.dev"><img class="kenken-image" src="images/kenken-image.png"></a>
+<div class="home-content">
+    <a href="https://danejacobson.github.io"><img src="images/profile.jpg" alt="Dane Jacobson anime altered profile" class="circular-image"></a>
+    <h1>Dane Jacobson</h1>
+    <div class="website-links">
+        <a class="website-link" href="cv.html">CV</a>
+        <a class="website-link" href="Dane_Jacobson_Résumé.pdf">Résumé</a>
     </div>
-    <div class="experience">
-        <a class="experience-link" href="https://theeverycompany.com" target="_blank">
-            <div class="experience-title">
-                <img src="images/every.jpeg" alt="Dane Jacobson anime altered profile" class="company-logo">
-                <div>
-                    <h3>The EVERY Company: SWE and Data Scientist</h3>
-                    <p>September 2020 - Present</p>
-                </div>
-            </div>
-        </a>
-        <p><a href="https://aiforgood.itu.int/summit23/"">United Nations AI for Good Summit 2023</a></p>
-        <p><a href="https://www.bintelligence.com/awards/artificial-intelligence-excellence-awards">Business Intelligence Group AI Excellence Award</a></p>
-        <p><a href="https://patents.google.com/patent/WO2022246284A3">WO2023220205A1</a>: Systems and methods for in-silico biopanning</p>
-        <p><a href="https://patents.google.com/patent/WO2022246284A3">WO2022246284A2</a>: Systems for end-to-end optimization of precision fermentation-produced animal proteins in food applications</p>
-        <p><a href="https://patents.google.com/patent/WO2022246224A1">WO2022246224A1</a>: Systems and methods for algorithmically estimating protein concentrations</p>
-        <p><a href="https://patents.google.com/patent/CA3208421A1/">WO2022182799A1</a>: Compositions for preparing animal-free egg-like products</p>
+    <div class="about-container">
+        <p>I conquered this tiny corner of the noosphere to bulletproof my thoughts in a public arena. I'm always peripatetically bouncing between interests but my foundations are in machine intelligence, synthetic biology, and music.</p>
+        <p>Feel free to contact me!</p>
     </div>
-    <div class="experience">
-        <a class="experience-link" href="https://ai.meta.com/" target="_blank">
-            <div class="experience-title">
-                <img src="images/meta.jpg" alt="Meta logo" class="company-logo">
-                <div>
-                    <h3>Facebook AI: Research Engineer Intern</h3>
-                    <p>May 2021 - August 2021</p>
-                </div>
-            </div>
-        </a>
-        <p>AI Integrity: <a href="https://ai.meta.com/research/publications/few-shot-neural-architecture-search/">Few-shot neural architecture search</a></p>
-    </div>
-    <div class="experience">
-        <a class="experience-link" href="https://cpcboston.com" target="_blank">
-            <div class="experience-title">
-                <img src="images/cpcboston.jpeg" alt="CPCBoston logo" class="company-logo">
-                <div>
-                    <h3>CPCBoston: Co-Founder</h3>
-                    <p>March 2020 - September 2020</p>
-                </div>
-            </div>
-        </a>
-        <p>Taught 10,000 students when COVID-19 shut down schools</p>
-    </div>
-    <div class="experience">
-        <a class="experience-link" href="https://www.princeton.edu" target="_blank">
-            <div class="experience-title">
-                <img src="images/princeton.jpg" alt="Princeton logo" class="company-logo princeton-logo">
-                <div>
-                    <h3>Princeton University: B.S.E.</h3>
-                    <p>September 2017 - May 2022</p>
-                </div>
-            </div>
-        </a>
-        <p>Statistics and Machine Learning, Molecular Biology, Music</p>
-    </div>
-    <div class="experience">
-        <div class="experience-title">
-            <img src="images/pencil.jpeg" alt="Hard Skills" class="company-logo">
-            <div>
-                <h3>Technical Skills</h3>
-                <p>stuff i can do</p>
-            </div>
-        </div>
-        <p>Writing down technical skills never sat well with me because it feels restricting. Most importantly, I am the most voracious, curious, and competitive learner that I know. While I have a degree in CS, I taught myself ML as an intern and filed my first patent for EVERY in one month. Another example: in two weeks I wrote an RL policy to design a healthier but functionally equivalent soy legumoglobin A, built a GPT-3 based mental health disorder classifier, and composed a big band score, with no prior experience in these fields.</p>
-        <br>
-        <p>NextJS, ReactJS, Tailwind, HTML/CSS/JS/TS (EVERY stack was vanilla)</p>
-        <p>FastAPI, Flask, Postgres, ElasticSearch</p>
-        <p>Python, NodeJS, Java</p>
-        <p>PyTorch, MLX, learning CUDA</p>
-        <p>GCP, Travis CI, Git</p>
+    <div class="social-icons">
+        <a href="https://github.com/DaneJacobson" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/danesonance" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/dane-jacobson-ba0825155/" target="_blank"><i class="fab fa-linkedin"></i></a>
     </div>
 </div>
 
