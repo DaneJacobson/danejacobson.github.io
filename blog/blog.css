@@ -1,0 +1,55 @@
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    text-align: center;
+    margin: 0;
+    margin-top: 40px;
+    padding: 0;
+    background-color: rgb(245 242 233);
+    color: #111827;
+}
+
+a {
+    color: rgb(246, 74, 74);
+}
+
+p {
+    margin-bottom: 20px;
+}
+h4 {
+    margin-bottom: 15px;
+}
+
+.circular-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.blog-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blog-header {
+    text-align: center;
+}
+
+.blog-content {
+    width: 40%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    color: rgb(246, 74, 74);
+    text-decoration: none;
+}
+
+.social-icons i {
+    font-size: 24px;
+    margin: 0 5px 5px;
+}
