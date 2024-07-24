@@ -11,7 +11,7 @@
     <meta name="generator" content="Hugo 0.114.0">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
-    <title>Dane Jacobson | Thaumaturgy</title>
+    <title>Dane Jacobson | Ayke Logbook</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="robots" content="all,follow">
     <meta name="googlebot" content="index,follow,snippet,archive">
@@ -31,11 +31,11 @@
     <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
     <link href="https://danejacobson.github.io/index.xml" rel="alternate" type="application/rss+xml" title="danejacobson.github.io">
-    <meta property="og:title" content="danejacobson.github.io">
+    <meta property="og:title" content="Ayke Logbook">
     <meta property="og:description" content>
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://danejacobson.github.io/">
-    <meta name="twitter:title" content="danejacobson.github.io">
+    <meta name="twitter:title" content="Ayke Logbook">
     <meta name="twitter:description" content>
 </head>
 <body class="terminal">
@@ -46,6 +46,8 @@
                     <a href="../">danejacobson</a>
                     :~#
                     <a href="/">thaumaturgy</a>
+                    /
+                    <a href="/thaumaturgy/ayke_logbook.html">ayke</a>
                     /
                 </div>
             </header>
@@ -59,63 +61,64 @@
         </div>
     </div>
     <div class="container animated zoomIn fast">
-        <h1>Thaumaturgy: where a wannabe wizard workshops miracles</h1>
+        <h1>Ayke Logbook</h1>
         <br>
 
         <p>
-            This is a collection of projects I am willing into existence. If 
-            you find yourself curious about any of them, please reach out to me!
+            <a href="https://en.wikipedia.org/wiki/Ayke_Agus">Ayke Agus</a> 
+            was one of 
+            <a href="https://www.youtube.com/watch?v=kFaq9kTlcaY">Jascha Heifetz</a>'s 
+            friends, accompanists, and biographer.
+            She was not only a virtuoso, but a deeply thoughtful pianist, with an
+            ability to read musician's minds.
+            Also she Indonesian, just like my mother! The North Star
+            of Ayke is no less than an AI pianist that can:
         </p>
-
-        <ul>
-            <li>
-                Scaling the data wall of deep learning in synthetic biology via 
-                molecular dynamics simulations and HPC
-            </li>
-
-            <li>
-                Commercialization of robopsychology via B2B mechanistic interpretability
-            </li>
-
-            <li>
-                <a href="/thaumaturgy/ayke">Ayke:</a> Full automation of pianist 
-                and orchestral accompaniment for classical musicians.
-            </li>
-
-            <li>
-                Formal Theory of the Existence of AI Consciousness
-            </li>
-        </ul>
-
+        <ol>
+            <li>Play any piece</li>
+            <li>With any instrument</li>
+            <li>Follow the soloist</li>
+            <li>Live and in real time</li>
+        </ol>
         <p>
-            Here are other things I've built, although most of my work is under 
-            strict IP.
+            Imagine a pianist at a hundredth of the cost, that can 
+            play forever, at any time of day, at any place. This is the promise of
+            Ayke, and come hell or high water I shall deliver for every child who
+            can't afford to play with or doesn't have access to a pianist.
+        </p>
+        <p>
+            This is my logbook (which is in reverse chronological order because 
+            I choose the rules). I'm learning everything on-demand, so if you're 
+            inspired know that I, too, started from nothing. Let's build!
         </p>
 
-        <ul>
-            <li>
-                <a href="https://github.com/DaneJacobson/llm.rs">GPT2 in Rust</a>. 
-                All these nerds kept building things from scratch in C so I thought I'd be
-                different in the exact same way and learn Rust. It was educational,
-                once I had wrestled the compiler into submission...
-            </li>
+        <h2>23-07-2024</h2>
+        <p>
+            Conceived of the project and set up the Ayke Logbook. Did some brainstorming
+            on what a foundational model might look like. Since I am a violinist
+            we might as well 
+            <a href="https://www.uservoice.com/blog/drive-internal-alignment">dogfood</a> 
+            and start with just a violin accompaniment.
+        </p>
+        <p>
+            At a first pass, the final model takes violin audio, piano audio, and 
+            sheet music, just like how humans do it. Now for v0, I suspect that sheet music is irrelevant
+            and that we only need the violin and piano audio. I'm thinking we pick one short song (TBD, 
+            but don't worry the hidden ace up my sleeve with Ayke is I have lots of data) and train 
+            some autoregressive model to predict what the next sampling step is from the current audio.
+            Then at inference time we have no violin output, and the piano output is both played out 
+            loud and passed back in as input with a context window (along with the live violin audio). 
+            This sounds stupid but I do not care. 
+            At the very least I'll get the audio processing basics down.
+            Fail fast, let's go!
+        </p>
+        <p>
+            Steps: split violin and piano audio and make a big dataset. Define architecture and train.
+            Attempt inference. Profit.
+        </p>
 
-            <li>
-                <a href="https://3d-kenken.pages.dev/">3D Kenken</a>. Kenken is 
-                like Sudoku, only more fun because there are more logical paths 
-                to a solution. So I did the natural thing and went from 2D to 3D. 
-                And before you ask, no, I can't make 3D Sudoku.
-                Why? Because it's literally impossible - do you know how to fit 27 into 9?
-            </li>
-
-            <iframe 
-                src="https://3d-kenken.pages.dev/" 
-                width="600" 
-                height="400" 
-                frameborder="0">
-            </iframe>
-        </ul>
         
+
         <div class="footer">
             Modified from 
             <a href="https://github.com/mrmierzejewski/hugo-theme-console/" target="_blank">
