@@ -63,8 +63,8 @@
 }
 
 :root {
-    --global-font-size: 0.9rem;
-    --global-font-color: #444;
+    --global-font-size: 1rem;
+    --global-font-color: #000000;
     --mono-font-stack: Roboto Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
     --font-stack: IBMPlexSerif, Lora, Noto Serif, Playfair Display, serif;
     --font-body-stack: IBMPlexSerif, Lora, Noto Serif, Playfair Display, serif;
@@ -77,7 +77,7 @@
 @media only screen and (max-width: 850px) {
     :root {
         --global-font-size: 1rem;
-        --global-font-color: #444444;
+        --global-font-color: #000000;
         --global-line-height: 1.625em;
         --page-width: 60em;
     }
