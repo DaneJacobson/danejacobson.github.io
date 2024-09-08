@@ -63,7 +63,7 @@
 }
 
 :root {
-    --global-font-size: 1rem;
+    --global-font-size: 1.25rem;
     --global-font-color: #000000;
     --mono-font-stack: Roboto Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
     --font-stack: IBMPlexSerif, Lora, Noto Serif, Playfair Display, serif;
