@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+    <!-- Cloudflare Web Analytics -->
+    <script defer
+        src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "95b41080581648879f87b1dc54c0c376"}'></script>
+    </script>
+    <!-- End Cloudflare Web Analytics -->
+
+    <meta name="generator" content="Hugo 0.114.0">
+    <meta name="author" content="Dane Jacobson">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>Dane Jacobson | Torch to JAX</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <meta name="title" content="Torch to JAX">
+    <meta name="description" content="How to convert Torch models to JAX">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <link rel="stylesheet" href="../../../css/terminal-0.7.2.min.css">
+    <link rel="stylesheet" href="../../../css/animate-4.1.1.min.css">
+    <link rel="stylesheet" href="../../../css/console.css">
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="apple-touch-con" sizes="180x180" href="../../../img/favicon/profile.jpg">
+    <link rel="icon" type="image/jpg" sizes="32x32" href="../../../img/favicon/profile.jpg">
+    <link rel="icon" type="image/jpg" sizes="16x16" href="../../../img/favicon/profile.jpg">
+    <link rel="manifest" href="/img/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+    <link rel="canonical" href="https://danej.co/notes/2024/09/torch_to_jax.html">
+
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://danej.co/notes/2024/09/torch_to_jax.xml" rel="alternate" type="application/rss+xml" title="Dane's Running Logbook">
+    <meta property="og:title" content="Dane's Running Logbook">
+    <meta property="og:description" content="Deadbeat to Pheidippides">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://danej.co/notes/running">
+    <!-- <meta property="og:image" content=""> -->
+    <!-- <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630"> -->
+    <!-- <meta name="twitter:card" content=""> -->
+    <!-- <meta name="twitter:image" content="https://danej.co/img/twitter-og-image.jpg"> -->
+    <meta name="twitter:title" content="Dane's Running Logbook">
+    <meta name="twitter:description" content="Deadbeat to Pheidippides">
+
+</head>
+<body class="terminal">
+    <div class="container">
+        <div class="terminal-nav">
+            <header class="terminal-logo">
+                <div class="logo terminal-prompt">
+                    <a href="/">danejacobson</a>
+                    :~#
+                    <a href="/notes/">notes</a>
+                    /
+                    <a href="/notes/2024/09/torch_to_jax.html">torch_to_jax</a>
+                    /
+                </div>
+            </header>
+            <nav class="terminal-menu">
+                <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                    <li><a href="/notes/" typeof="ListItem">notes/</a></li>
+                    <li><a href="/vitaegraph/" typeof="ListItem">vitaegraph/</a></li>
+                    <li><a href="/thaumaturgy/" typeof="ListItem">thaumaturgy/</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="container animated zoomIn fast">
+        <h1>Torch To JAX</h1>
+        <br>
+        <p>
+            There is an ongoing war in deep learning between the PyTorch and JAX ecosystems. PyTorch 
+            is clearly winning. Deep learning feels like Groundhog Day but you're being served another
+            "How-To" or paper in PyTorch.
+        </p>
+        <p>
+            This balance makes sense because PyTorch is to JAX what JavaScript is to Rust: it just works,
+            there's a library for everything, and there's N+1 tutorials for any experiment you might
+            be tempted to try.
+        </p>
+        <p>
+            But as everyone swallows their Bitter Lesson pills, the truth emerges at scale: that JAX
+            is better than PyTorch. The reasons why are
+            <a href="https://neel04.github.io/my-website/blog/pytorch_rant/">documented</a>, so I won't 
+            address them here,
+            but the bottom line is that if you look at the important AI labs, you'll notice that most 
+            of them use JAX (and Rust) in one form or another: 
+            <a href="https://x.ai">xAI</a>,
+            <a href="https://anthropic.com">Anthropic</a>,
+            <a href="https://deepmind.google/">Google DeepMind</a>,
+            <a href="https://www.midjourney.com/home">Midjourney</a>.
+            I put Rust in paranthesses, because the reason companies are adopting Rust is analogous 
+            to the reasons they adopt JAX.
+        </p>
+        <p>
+            But why is this blog titled "Torch to JAX"? Well, I have a tendency to use my blog not just
+            as a place for writing but as a place to refactor FAQs that I get from friends. IYKYK. This blog 
+            seeks to answer one question that frequently crops up: "Dane, I'm sold, but I need to convert
+            this PyTorch model into JAX!" It's easy, I'll show you how.
+        </p>
+        <hr>
+        <p>
+            The first principles of converting from PyTorch to JAX are:
+            <ol>
+                <li>defining theroetically equivalent models in PyTorch and JAX</li>
+                <li>porting all parameters and hyperparameters over to JAX</li>
+                <li>saving your model so that you can load it in JAX form again in the future</li>
+            </ol>
+        </p>
+        <p>In step 1 we define the models:</p>
+        <img src="img/torch_to_jax-models.png">
+        <p>
+            In step 2, we load our PyTorch model and convert it to JAX. In general, I feel that the 
+            Flax/Haiku ecosystem is terrible, and instead you should be using
+            <a href="https://docs.kidger.site/equinox/">Patrick Kidger's Equinox</a> 
+            for neural network work as it provides fantastic methods for performing 
+            <a href="https://docs.kidger.site/equinox/api/manipulation/#common-operations-on-pytrees">
+                model surgery:
+            </a>
+        </p>
+        <img src="img/torch_to_jax-transfer.png">
+        <p>
+            YMMV here, and as you get to more complicated models you'll need to write custom weight
+            transfer code. However, the only principle you need to remember is that all tunable parameters
+            must be shared.
+        </p>
+        <p>
+            You can check that you've successfully ported over the weights by passing an input through
+            both the old PyTorch and the new Equinox model and check if the outputs are identical. 
+            Barring changes in the weight precision, the outputs should be equal.
+        </p>
+        <p>
+            In step 3, you can save the JAX model however you see fit. For small models, this is just 
+            one file, but for larger files you'll have a few tensor shards you'll need to port. At 
+            this point, you're in JAX world. Also recall that JAX does not allocate memory until the 
+            JIT compilation happens, so you're really just swapping around pointers.
+        </p>
+        <hr>
+        <p>
+            If you're new to ML engineering, a simple project would be to pick an existing module (like CLIP)
+            that exists in <a href="https://github.com/huggingface">HuggingFace transformers or diffusers</a>, 
+            port it to Equinox, upload the weights, and make a PR. Do this twice and you'll learn a 
+            great deal, as well as significantly speed up performance (I notice at least a 7% speed up
+            in inference across different backends and a 2-3x speed up for training!)
+        </p>
+        <p>
+            Go forth and prosper!
+        </p>
+    <div class="footer">
+        Modified from
+        <a href="https://github.com/mrmierzejewski/hugo-theme-console/" target="_blank">
+            Hugo Console Theme
+        </a>
+    </div>
+    </div>
+</body>
+</html>

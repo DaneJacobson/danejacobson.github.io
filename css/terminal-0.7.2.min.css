@@ -5,7 +5,7 @@
     --mono-font-stack: Roboto Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
     --font-stack: IBMPlexSerif, Lora, Noto Serif, Playfair Display, serif;
     --font-body-stack: IBMPlexSerif, Lora, Noto Serif, Playfair Display, serif;
-    --background-color: #fff;
+    --background-color: #fffbeb;
     --page-width: 60em;
     --font-color: #000000;
     --invert-font-color: #fff;
@@ -14,7 +14,7 @@
     --error-color: #d20962;
     --progress-bar-background: #727578;
     --progress-bar-fill: #151515;
-    --code-bg-color: #e8eff2;
+    /* --code-bg-color: #e8eff2; */
     --input-style: solid;
     --display-h1-decoration: none;
     --highlight-text-color: #e3e9fa
@@ -74,7 +74,7 @@ em {
 }
 
 blockquote,
-code,
+/* code, */
 em,
 strong {
     line-height: var(--global-line-height)
@@ -82,7 +82,7 @@ strong {
 
 .logo,
 blockquote,
-code,
+/* code, */
 footer,
 h1,
 h2,
@@ -162,7 +162,7 @@ blockquote::after {
     color: #9ca2ab
 }
 
-code {
+/* code {
     font-weight: inherit;
     background-color: var(--code-bg-color);
     font-family: var(--mono-font-stack)
@@ -200,7 +200,7 @@ pre code {
     display: inline-block;
     min-width: 100%;
     font-family: var(--mono-font-stack)
-}
+} */
 
 .terminal .logo,
 .terminal blockquote,
@@ -430,7 +430,8 @@ p {
 }
 
 img {
-    width: 100%
+    width: 100%;
+    border-radius: 10px;
 }
 
 .progress-bar {
