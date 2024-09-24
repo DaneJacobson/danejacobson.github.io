@@ -35,9 +35,9 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/img/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-    <link href="https://danej.co/notes/2024/09/torch_to_jax.xml" rel="alternate" type="application/rss+xml" title="Dane's Running Logbook">
-    <meta property="og:title" content="Dane's Running Logbook">
-    <meta property="og:description" content="Deadbeat to Pheidippides">
+    <link href="https://danej.co/notes/2024/09/torch_to_jax.xml" rel="alternate" type="application/rss+xml" title="Torch to JAX">
+    <meta property="og:title" content="Torch to JAX">
+    <meta property="og:description" content="How to convert Torch models to JAX">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://danej.co/notes/running">
     <!-- <meta property="og:image" content=""> -->
@@ -45,8 +45,8 @@
     <meta property="og:image:height" content="630"> -->
     <!-- <meta name="twitter:card" content=""> -->
     <!-- <meta name="twitter:image" content="https://danej.co/img/twitter-og-image.jpg"> -->
-    <meta name="twitter:title" content="Dane's Running Logbook">
-    <meta name="twitter:description" content="Deadbeat to Pheidippides">
+    <meta name="twitter:title" content="Torch to JAX">
+    <meta name="twitter:description" content="How to convert Torch models to JAX">
 
 </head>
 <body class="terminal">
@@ -75,54 +75,59 @@
         <h1>Torch To JAX</h1>
         <br>
         <p>
-            There is an ongoing war in deep learning between the PyTorch and JAX ecosystems. PyTorch 
-            is clearly winning. Deep learning feels like Groundhog Day but you're being served another
-            "How-To" or paper in PyTorch.
+            To say that there is an ongoing war in deep learning between the PyTorch and JAX ecosystems
+            would be an exaggeration. PyTorch 
+            is winning. Deep learning research feels like Groundhog Day but you wake up each morning to
+            another "How-To" or paper written PyTorch.
         </p>
         <p>
-            This balance makes sense because PyTorch is to JAX what JavaScript is to Rust: it just works,
-            there's a library for everything, and there's N+1 tutorials for any experiment you might
-            be tempted to try.
+            This balance makes sense because PyTorch is to JAX what JavaScript is to Rust: PyTorch just
+            works, there's a library for everything, and there's N+1 tutorials for any experiment you might
+            be tempted to try. And with NVIDIA contributing so intensely to the PyTorch CUDA kernels, the 
+            Force is strong with PyTorch.
         </p>
         <p>
-            But as everyone swallows their Bitter Lesson pills, the truth emerges at scale: that JAX
-            is better than PyTorch. The reasons why are
-            <a href="https://neel04.github.io/my-website/blog/pytorch_rant/">documented</a>, so I won't 
+            But as everyone swallows their 
+            <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">Bitter Lesson</a>
+            pills, the truth emerges at scale: JAX >> PyTorch. The reasons why are
+            <a href="https://neel04.github.io/my-website/blog/pytorch_rant/">documented</a>, and I won't 
             address them here,
             but the bottom line is that if you look at the important AI labs, you'll notice that most 
-            of them use JAX (and Rust) in one form or another: 
+            of them use JAX in their production models in one form or another: 
             <a href="https://x.ai">xAI</a>,
             <a href="https://anthropic.com">Anthropic</a>,
             <a href="https://deepmind.google/">Google DeepMind</a>,
             <a href="https://www.midjourney.com/home">Midjourney</a>.
-            I put Rust in paranthesses, because the reason companies are adopting Rust is analogous 
-            to the reasons they adopt JAX.
+        </p>
+        <p>  
+            TLDR; if you work at scale, you want the advantages that JAX affords you. PyTorch is for 
+            small models. Small models are no fun. You want to have fun don't you?
         </p>
         <p>
-            But why is this blog titled "Torch to JAX"? Well, I have a tendency to use my blog not just
-            as a place for writing but as a place to refactor FAQs that I get from friends. IYKYK. This blog 
-            seeks to answer one question that frequently crops up: "Dane, I'm sold, but I need to convert
-            this PyTorch model into JAX!" It's easy, I'll show you how.
+            Cool, but why is this blog titled "Torch to JAX"? Good question. I have a tendency to use my blog not just
+            as writing repository but as a place to refactor FAQs that I get from friends. This blog 
+            seeks to answer one common question: "Dane, I'm sold, but I need to convert
+            this PyTorch model into JAX!" I'm omitting most of the code but the outline is below.
         </p>
         <hr>
         <p>
             The first principles of converting from PyTorch to JAX are:
             <ol>
-                <li>defining theroetically equivalent models in PyTorch and JAX</li>
-                <li>porting all parameters and hyperparameters over to JAX</li>
-                <li>saving your model so that you can load it in JAX form again in the future</li>
+                <li>defining equivalent models in PyTorch and JAX</li>
+                <li>porting all PyTorch parameters and hyperparameters over to JAX</li>
+                <li>saving your JAX model if you so desire</li>
             </ol>
         </p>
         <p>In step 1 we define the models:</p>
         <img src="img/torch_to_jax-models.png">
         <p>
-            In step 2, we load our PyTorch model and convert it to JAX. In general, I feel that the 
-            Flax/Haiku ecosystem is terrible, and instead you should be using
+            In step 2, we load our PyTorch model and convert it to JAX. Let me save you some trouble: 
+            the Flax/Haiku ecosystem is garbage, and you should use
             <a href="https://docs.kidger.site/equinox/">Patrick Kidger's Equinox</a> 
             for neural network work as it provides fantastic methods for performing 
             <a href="https://docs.kidger.site/equinox/api/manipulation/#common-operations-on-pytrees">
-                model surgery:
-            </a>
+                model surgery
+            </a>. There are two advantages to Equinox. 1) It's better and 2) Patrick is cool.
         </p>
         <img src="img/torch_to_jax-transfer.png">
         <p>
