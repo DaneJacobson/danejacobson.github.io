@@ -136,6 +136,15 @@ h1 {
     color: #666;
 }
 
+/* Tight lines by default: terminal.css pads every li by 0.65rem and sets a
+   1.625em line height. Loosen per page if a page needs it. */
+p,
+li,
+li>ul>li {
+    padding-bottom: 0;
+    line-height: 1.2;
+}
+
 .btn-ghost {
     color: #666;
     background-color: transparent;
